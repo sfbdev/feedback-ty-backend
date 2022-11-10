@@ -8,8 +8,7 @@ import {body, validationResult} from "express-validator";
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-
-const port = 3000;
+const PORT = process.env.PORT || 3030;
 
 app.post(
   "/register",
@@ -75,8 +74,8 @@ app.post(
   }
 );
 
-app.listen(port, async () => {
+app.listen(PORT, async () => {
   await db.open();
   await db.createTablesIfNotExists();
-  console.log(`Feedback app started on port ${port}`)
+  console.log(`Feedback app started on port ${PORT}`)
 });
